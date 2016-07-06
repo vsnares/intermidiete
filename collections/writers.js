@@ -17,9 +17,11 @@ Writers.allow({
 });
 
 
-WritersSchema = new SimpleSchema({
+WriterSchema = new SimpleSchema({
   name: {
     type: String,
     label: "Name"
   },
 });
+
+Writers.attachSchema( WriterSchema );

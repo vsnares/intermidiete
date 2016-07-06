@@ -1,7 +1,7 @@
 Recipes = new Mongo.Collection('recipes', {
   transform: function(doc) {
     doc.writersObj = Writers.find({
-      _id: { $in: doc.users }
+      _id: { $in: [doc.users] }
     });
     return doc;
   }

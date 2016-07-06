@@ -11,3 +11,20 @@ Meteor.publish('singleRecipe', function(id){
   Meteor
   return Recipes.find({_id: id});
 });
+
+Meteor.publish('writerRecipes', function(writerId) {
+  return Recipes.find({
+    writers: {
+      $in: [ writerId ]
+    }
+  });
+});
+
+Meteor.publish('recipeWriters', function(recipeId) {
+  var recipe = Recipes.findOne({ _id: recipeId });
+  return Writers.find({
+    _id: {
+      $in: recipe.writers
+    }
+  });
+});
