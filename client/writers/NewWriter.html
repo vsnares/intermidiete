@@ -1,5 +1,11 @@
 <template name="NewWriter">
   <div class="new-writer-container">
-    {{> quickForm collection= "Writers" id="insertWriterForm" type="insert" class="new-writer-form"}}
+    <form class="new-writer-form">
+        <input type="text" name="writerName">
+        {{#each recipes}}
+          <input type="checkbox" name="recipeName" class="boxCheck" value={{_id}}>{{name}}
+        {{/each}}
+        <input type="submit" value="Add Writer" class="btn btn-primary">
+    </form>
   </div>
 </template>
