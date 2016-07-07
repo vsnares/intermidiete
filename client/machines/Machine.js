@@ -1,15 +1,15 @@
-Template.Recipe.helpers({
-  updateRecipeId: function () {
+Template.Machine.helpers({
+  updateMachineId: function () {
     return this._id;
   }
 });
 
-Template.Recipe.events({
+Template.Machine.events({
   'click .toggle-menu' : function () {
     Meteor.call('toggleMenuItem', this._id, this.inMenu);
   },
   'click .fa-trash' : function () {
-    Meteor.call('deleteRecipe', this._id);
+    Meteor.call('deleteMachine', this._id);
   },
   'click .fa-pencil' : function () {
     Session.set('editMode', !Session.get('editMode'));

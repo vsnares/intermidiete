@@ -2,8 +2,8 @@
   <div class="new-writer-container">
     <form class="new-writer-form">
         <input type="text" name="writerName">
-        {{#each recipes}}
-          <input type="checkbox" name="recipeName" class="boxCheck" value={{_id}}>{{name}}
+        {{#each machines}}
+          <input type="checkbox" name="machineName" class="boxCheck" value={{_id}}>{{name}}
         {{/each}}
         <input type="submit" value="Add Writer" class="btn btn-primary">
     </form>

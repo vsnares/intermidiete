@@ -1,9 +1,9 @@
-<template name="Recipes">
-  {{> NewRecipe}}
-  <section class="recipes">
+<template name="Machines">
+  {{> NewMachine}}
+  <section class="machines">
     {{#if Template.subscriptionsReady}}
-      {{#each recipes}}
-        {{> Recipe}}
+      {{#each machines}}
+        {{> Machine}}
       {{/each}}
     {{else}}
       <p>Loading...</p>

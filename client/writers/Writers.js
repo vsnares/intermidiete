@@ -1,14 +1,14 @@
 Template.NewWriter.onCreated(function() {
   var self = this;
   self.autorun(function() {
-    self.subscribe('recipes');
+    self.subscribe('machines');
     self.subscribe('writers')
   });
 });
 
 Template.NewWriter.helpers({
-  recipes: ()=> {
-    return Recipes.find({});
+  machines: ()=> {
+    return Machines.find({});
   }
 });
 
@@ -22,16 +22,16 @@ Template.NewWriter.events({
       var writerNameVar = event.target.writerName.value;
       Writers.insert({
         name: writerNameVar,
-        recipes: array
+        machines: array
       });
       template.find("form").reset();
     }
 });
 
 Template.Writers.helpers({
-  writerRecipes: function(writerId) {
-    return Recipes.find({
-      recipes: {
+  writerMachines: function(writerId) {
+    return Machines.find({
+      rmachines: {
         $in: [ writerId ]
       }
     });

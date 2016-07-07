@@ -1,13 +1,13 @@
-Recipes = new Mongo.Collection('recipes', {
-  transform: function(doc) {
-    doc.writersObj = Writers.find({
-      _id: { $in: [doc.users] }
-    });
-    return doc;
-  }
+Machines = new Mongo.Collection('machines', {
+  // transform: function(doc) {
+  //   doc.writersObj = Writers.find({
+  //     _id: { $in: [doc.users] }
+  //   });
+  //   return doc;
+  // }
 });
 
-Recipes.allow({
+Machines.allow({
   insert: function(userId, doc) {
     return !!userId;
   },
@@ -25,7 +25,7 @@ Ingredient = new SimpleSchema({
   }
 });
 
-RecipeSchema = new SimpleSchema({
+MachineSchema = new SimpleSchema({
   name: {
     type: String,
     label: "Name"
@@ -74,16 +74,16 @@ RecipeSchema = new SimpleSchema({
 
 Meteor.methods({
   toggleMenuItem: function(id, currentState) {
-    Recipes.update(id, {
+    Machines.update(id, {
       $set: {
         inMenu: !currentState
       }
     });
   },
 
-  deleteRecipe: function(id) {
-    Recipes.remove(id);
+  deleteMachine: function(id) {
+    Machines.remove(id);
   }
 });
 
-Recipes.attachSchema( RecipeSchema );
+Machines.attachSchema( MachineSchema );

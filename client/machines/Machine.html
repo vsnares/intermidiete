@@ -1,9 +1,9 @@
-<template name="Recipe">
-  <article class="recipe {{#if inMenu}}in-menu{{/if}}">
+<template name="Machine">
+  <article class="machine {{#if inMenu}}in-menu{{/if}}">
     <h3>{{name}}</h3>
     {{#if $.Session.get 'editMode'}}
     <!-- this is not working shit -->
-      {{> quickForm collection="Recipes" id=updateRecipeId type="update" doc=this}}
+      {{> quickForm collection="Machines" id=updateMachineId type="update" doc=this}}
     {{else}}
       <p>{{description}}</p>
       <p>
@@ -18,7 +18,7 @@
       {{/if}}
     {{/if}}
 
-    <a href="/recipe/{{_id}}">View Details</a>
+    <a href="/machine/{{_id}}">View Details</a>
     <i class="fa fa-pencil"></i>
     <i class="fa fa-trash"></i>
   </article>

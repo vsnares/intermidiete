@@ -1,10 +1,10 @@
 Writers = new Mongo.Collection('writers', {
-  transform: function(doc) {
-    doc.recipesObj = Recipes.find({
-      writers: { $in: [ doc._id ] }
-    });
-    return doc;
-  }
+  // transform: function(doc) {
+  //   doc.machinesObj = Machines.find({
+  //     writers: { $in: [ doc._id ] }
+  //   });
+  //   return doc;
+  // }
 });
 
 Writers.allow({
@@ -35,7 +35,7 @@ WriterSchema = new SimpleSchema({
     }
   },
 
-  recipes: {
+  machines: {
     type: [String]
   }
 });

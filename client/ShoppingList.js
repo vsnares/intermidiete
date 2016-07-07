@@ -1,12 +1,12 @@
 Template.ShoppingList.onCreated(function() {
   var self = this;
   self.autorun(function() {
-    self.subscribe('recipes');
+    self.subscribe('machines');
   });
 });
 
 Template.ShoppingList.helpers({
   shoppingList: ()=> {
-    return Recipes.find({inMenu: true});
+    return Machines.find({inMenu: true});
   }
 });

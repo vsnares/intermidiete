@@ -1,12 +1,12 @@
-Template.Menu.onCreated(function() {
+Template.Machines.onCreated(function() {
   var self = this;
   self.autorun(function() {
     self.subscribe('machines');
   });
 });
 
-Template.Menu.helpers({
+Template.Machines.helpers({
   machines: ()=> {
-    return Machines.find({inMenu: true});
+    return Machines.find({});
   }
 });

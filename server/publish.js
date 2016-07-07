@@ -1,30 +1,30 @@
-Meteor.publish('recipes', function(){
-  return Recipes.find({author: this.userId});
+Meteor.publish('machines', function(){
+  return Machines.find({author: this.userId});
 });
 
 Meteor.publish('writers', function(){
   return Writers.find({author: this.userId});
 });
 
-Meteor.publish('singleRecipe', function(id){
+Meteor.publish('singleMachine', function(id){
   check(id, String);
   Meteor
-  return Recipes.find({_id: id});
+  return Machines.find({_id: id});
 });
 
-Meteor.publish('writerRecipes', function(writerId) {
-  return Recipes.find({
+Meteor.publish('writerMachines', function(writerId) {
+  return Machines.find({
     writers: {
       $in: [ writerId ]
     }
   });
 });
 
-Meteor.publish('recipeWriters', function(recipeId) {
-  var recipe = Recipes.findOne({ _id: recipeId });
+Meteor.publish('machineWriters', function(machineId) {
+  var machine = Machines.findOne({ _id: machineId });
   return Writers.find({
     _id: {
-      $in: recipe.writers
+      $in: machine.writers
     }
   });
 });
