@@ -1,11 +1,11 @@
-<template name="NewWriter">
-  <div class="new-writer-container">
-    <form class="new-writer-form">
-        <input type="text" name="writerName">
+<template name="NewRoute">
+  <div class="new-route-container">
+    <form class="new-route-form">
+        <input type="text" name="routeName">
         {{#each machines}}
           <input type="checkbox" name="machineName" class="boxCheck" value={{_id}}>{{name}}
         {{/each}}
-        <input type="submit" value="Add Writer" class="btn btn-primary">
+        <input type="submit" value="Add Route" class="btn btn-primary">
     </form>
   </div>
 </template>

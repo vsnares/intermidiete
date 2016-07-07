@@ -1,13 +1,13 @@
-Writers = new Mongo.Collection('writers', {
+Routes = new Mongo.Collection('routes', {
   // transform: function(doc) {
   //   doc.machinesObj = Machines.find({
-  //     writers: { $in: [ doc._id ] }
+  //     routes: { $in: [ doc._id ] }
   //   });
   //   return doc;
   // }
 });
 
-Writers.allow({
+Routes.allow({
   insert: function(userId, doc) {
     return !!userId;
   },
@@ -18,7 +18,7 @@ Writers.allow({
 });
 
 
-WriterSchema = new SimpleSchema({
+RouteSchema = new SimpleSchema({
   name: {
     type: String,
     label: "Name"
@@ -40,4 +40,4 @@ WriterSchema = new SimpleSchema({
   }
 });
 
-Writers.attachSchema( WriterSchema );
+Routes.attachSchema( RouteSchema );

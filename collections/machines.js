@@ -1,6 +1,6 @@
 Machines = new Mongo.Collection('machines', {
   // transform: function(doc) {
-  //   doc.writersObj = Writers.find({
+  //   doc.routesObj = Routes.find({
   //     _id: { $in: [doc.users] }
   //   });
   //   return doc;

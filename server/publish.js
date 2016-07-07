@@ -2,8 +2,8 @@ Meteor.publish('machines', function(){
   return Machines.find({author: this.userId});
 });
 
-Meteor.publish('writers', function(){
-  return Writers.find({author: this.userId});
+Meteor.publish('routes', function(){
+  return Routes.find({author: this.userId});
 });
 
 Meteor.publish('singleMachine', function(id){
@@ -12,19 +12,19 @@ Meteor.publish('singleMachine', function(id){
   return Machines.find({_id: id});
 });
 
-Meteor.publish('writerMachines', function(writerId) {
+Meteor.publish('routeMachines', function(routeId) {
   return Machines.find({
-    writers: {
-      $in: [ writerId ]
+    routes: {
+      $in: [ routeId ]
     }
   });
 });
 
-Meteor.publish('machineWriters', function(machineId) {
+Meteor.publish('machineRoutes', function(machineId) {
   var machine = Machines.findOne({ _id: machineId });
-  return Writers.find({
+  return Routes.find({
     _id: {
-      $in: machine.writers
+      $in: machine.routes
     }
   });
 });

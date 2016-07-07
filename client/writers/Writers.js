@@ -1,38 +1,38 @@
-Template.NewWriter.onCreated(function() {
+Template.NewRoute.onCreated(function() {
   var self = this;
   self.autorun(function() {
     self.subscribe('machines');
-    self.subscribe('writers')
+    self.subscribe('routes')
   });
 });
 
-Template.NewWriter.helpers({
+Template.NewRoute.helpers({
   machines: ()=> {
     return Machines.find({});
   }
 });
 
-Template.NewWriter.events({
+Template.NewRoute.events({
   'submit form': function(event, template) {
       event.preventDefault();
       var selected = template.findAll( "input[type=checkbox]:checked");
       var array = _.map(selected, function(item) {
         return item.defaultValue;
       });
-      var writerNameVar = event.target.writerName.value;
-      Writers.insert({
-        name: writerNameVar,
+      var routeNameVar = event.target.routeName.value;
+      Routes.insert({
+        name: routeNameVar,
         machines: array
       });
       template.find("form").reset();
     }
 });
 
-Template.Writers.helpers({
-  writerMachines: function(writerId) {
+Template.Routes.helpers({
+  routeMachines: function(routeId) {
     return Machines.find({
       rmachines: {
-        $in: [ writerId ]
+        $in: [ routeId ]
       }
     });
   }
