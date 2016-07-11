@@ -31,7 +31,7 @@ Template.NewRoute.events({
 Template.Routes.helpers({
   routeMachines: function(routeId) {
     return Machines.find({
-      rmachines: {
+      machines: {
         $in: [ routeId ]
       }
     });
