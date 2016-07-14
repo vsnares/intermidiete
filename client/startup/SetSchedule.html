@@ -1,7 +1,17 @@
 <template name="SetSchedule">
-  <p>
-    {{#each machine}}
-      {{name}}
+    {{#each machines}}
+      <div class="machine">
+        <br>
+        <h3>{{name}} : </h3>
+        <form class="schedule-input-form">
+          <input id="{{_id}}_monday"    type="radio" name="{{_id}}_day" value="1">Monday
+          <input id="{{_id}}_tuesday"   type="radio" name="{{_id}}_day" value="2">Tuesday
+          <input id="{{_id}}_wednesday" type="radio" name="{{_id}}_day" value="3">Wednesday
+          <input id="{{_id}}_thursday"  type="radio" name="{{_id}}_day" value="4">Thursday
+          <input id="{{_id}}_friday"    type="radio" name="{{_id}}_day" value="5">Friday
+          <input id="{{_id}}_saturday"  type="radio" name="{{_id}}_day" value="6">Saturday
+          <input id="{{_id}}_sunday"    type="radio" name="{{_id}}_day" value="7">Sunday
+        </form>
+      </div>
     {{/each}}
-  </p>
 </template>
