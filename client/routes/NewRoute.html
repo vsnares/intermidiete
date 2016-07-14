@@ -1,6 +1,7 @@
 <template name="NewRoute">
   <div class="new-route-container">
     <form class="new-route-form">
+        <label>Please add your routes</label>
         <input type="text" name="routeName">
         {{#each machines}}
           <input type="checkbox" name="machineName" class="boxCheck" value={{_id}}>{{name}}

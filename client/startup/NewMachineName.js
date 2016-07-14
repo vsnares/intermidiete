@@ -27,7 +27,7 @@ Template.NewMachineName.events({
       var insertedMachineId = Machines.insert({
         name: machineNameVar
       });
-      
+
       array.forEach(function(itemId, i, arr) {
         Routes.update(itemId, {
           $push: { machines: insertedMachineId },
@@ -37,7 +37,7 @@ Template.NewMachineName.events({
   },
 
   'click .done' : function (event) {
-      FlowRouter.go('/');
+      FlowRouter.go('/set_schedule');
   },
 
   'click .asign_to_route' : function (event) {
