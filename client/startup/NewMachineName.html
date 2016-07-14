@@ -1,0 +1,26 @@
+<template name="NewMachineName">
+  <div class="new-machine-name-container">
+    <form class="new-machine-name-form">
+        <input type="text" name="machineName">
+        {{#if $.Session.get 'AsignToRouteMode'}}
+          {{#each routes}}
+            <input type="checkbox" name="routeName" class="boxCheck" value={{_id}}>{{name}}
+          {{/each}}
+          <br>
+        {{/if}}
+        <button type="button" class="btn btn-text asign_to_route">+ assign to Route</button>
+        <br>
+        <br>
+        <input type="submit" value="Add Next" class="btn btn-primary">
+        <button type="button" class="btn btn-confirmation done">Done</button>
+    </form>
+  </div>
+  <div class="abz">
+    <br>
+      {{#each machines}}
+      <div class="machine">
+        {{name}}
+      </div>
+      {{/each}}
+  </div>
+</template>

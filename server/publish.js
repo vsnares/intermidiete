@@ -12,19 +12,27 @@ Meteor.publish('singleMachine', function(id){
   return Machines.find({_id: id});
 });
 
+Meteor.publish('singleRoute', function(id){
+  check(id, String);
+  Meteor
+  return Routes.find({_id: id});
+});
+
+
+
 Meteor.publish('routeMachines', function(routeId) {
+  var route = Routes.findOne({ _id: routeId });
   return Machines.find({
-    routes: {
-      $in: [ routeId ]
+    _id: {
+      $in: route.machines
     }
   });
 });
 
 Meteor.publish('machineRoutes', function(machineId) {
-  var machine = Machines.findOne({ _id: machineId });
   return Routes.find({
-    _id: {
-      $in: machine.routes
+    machines: {
+      $in: [ machineId ]
     }
   });
 });

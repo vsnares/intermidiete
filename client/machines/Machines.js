@@ -8,5 +8,12 @@ Template.Machines.onCreated(function() {
 Template.Machines.helpers({
   machines: ()=> {
     return Machines.find({});
+  },
+  machineRoutes: function(machineId) {
+    return Routes.find({
+      machines: {
+        $in: [ machineId ]
+      }
+    });
   }
 });

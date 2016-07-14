@@ -1,10 +1,10 @@
 Machines = new Mongo.Collection('machines', {
-  // transform: function(doc) {
-  //   doc.routesObj = Routes.find({
-  //     _id: { $in: [doc.users] }
-  //   });
-  //   return doc;
-  // }
+  transform: function(doc) {
+    doc.routesObj = Routes.find({
+      routes: { $in: [ doc._id ] }
+    });
+    return doc;
+  }
 });
 
 Machines.allow({
@@ -32,11 +32,13 @@ MachineSchema = new SimpleSchema({
   },
 
   desc: {
+    optional: true,
     type: String,
     label: "Description"
   },
 
   ingredients: {
+    optional: true,
     type: [Ingredient]
   },
 

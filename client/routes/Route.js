@@ -1,39 +1,17 @@
-Template.NewRoute.onCreated(function() {
+Template.Route.helpers({
+  route: function() {
+    return Routes.findOne();
+  },
+  getMachineName: function(machineId) {
+    return Machines.findOne(machineId).name;
+  }
+});
+
+Template.Route.onCreated(function() {
   var self = this;
   self.autorun(function() {
+    var id = FlowRouter.getParam('id');
+    self.subscribe('singleRoute', id);
     self.subscribe('machines');
-    self.subscribe('routes')
   });
-});
-
-Template.NewRoute.helpers({
-  machines: ()=> {
-    return Machines.find({});
-  }
-});
-
-Template.NewRoute.events({
-  'submit form': function(event, template) {
-      event.preventDefault();
-      var selected = template.findAll( "input[type=checkbox]:checked");
-      var array = _.map(selected, function(item) {
-        return item.defaultValue;
-      });
-      var routeNameVar = event.target.routeName.value;
-      Routes.insert({
-        name: routeNameVar,
-        machines: array
-      });
-      template.find("form").reset();
-    }
-});
-
-Template.Routes.helpers({
-  routeMachines: function(routeId) {
-    return Machines.find({
-      machines: {
-        $in: [ routeId ]
-      }
-    });
-  }
 });
