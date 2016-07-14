@@ -1,7 +1,9 @@
 <template name="NewMachineName">
   <div class="new-machine-name-container">
     <form class="new-machine-name-form">
-        <input type="text" name="machineName">
+        <label>New Machine Name
+          <input type="text" name="machineName" placeholder="ClientLocationType - MainOfficeСanteenDrinks">
+        </label>
         {{#if $.Session.get 'AsignToRouteMode'}}
           {{#each routes}}
             <input type="checkbox" name="routeName" class="boxCheck" value={{_id}}>{{name}}
@@ -19,6 +21,7 @@
     <br>
       {{#each machines}}
       <div class="machine">
+        <br>
         {{name}}
       </div>
       {{/each}}

@@ -2,11 +2,13 @@
   {{> NewRoute}}
   <div class="all-routes-container">>
     {{#each routes}}
-      <p>______________________________________________________</p>
+    <div class="machine">
+      <br>
       Name: {{name}}
       {{#each machinesObj}}
         <li>{{name}}</li>
       {{/each}}
+    </div>
     {{/each}}
   </div>
 </template>
