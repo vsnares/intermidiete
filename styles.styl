@@ -119,11 +119,11 @@ p
     margin-top 20px
     +above($med)
         lost-center 90%
-        padding-left $side-nav
+        // padding-left $side-nav
     +above($large)
-        lost-center 80%
-        margin-top 40px
-        padding-left $side-nav-large
+        lost-center 50%
+        margin-top 240px
+        // padding-left $side-nav-large
 
 .new-machine
     margin-bottom 20px
@@ -166,6 +166,7 @@ p
         background teal
         border-color teal
         color dark-purp
+        width 25%
         &:hover
             background @background - 40
             border-color @background
@@ -178,6 +179,7 @@ p
     &.btn-text
         color purp
         background transparent
+        float right
         border solid 2px purp
         shadow-level(0)
         &:hover

@@ -2,11 +2,13 @@
   <div class="new-machine-name-container">
     <form class="new-machine-name-form">
         <label>New Machine Name
-          <input type="text" name="machineName" placeholder="ClientLocationType - MainOfficeСanteenDrinks">
+          <input type="text" name="machineName" placeholder="ClientLocationType - MainOfficeСanteenDrinks" data-role="tagsinput">
         </label>
         {{#if $.Session.get 'AsignToRouteMode'}}
           {{#each routes}}
-            <input type="checkbox" name="routeName" class="boxCheck" value={{_id}}>{{name}}
+            <li>
+              <input type="checkbox" name="routeName" value={{_id}}>{{name}}
+            </li>
           {{/each}}
           <br>
         {{/if}}
@@ -14,10 +16,11 @@
         <br>
         <br>
         <input type="submit" value="Add Next" class="btn btn-primary">
+        <br>
         <button type="button" class="btn btn-confirmation done">Done</button>
     </form>
   </div>
-  <div class="abz">
+  <!-- <div class="abz">
     <br>
       {{#each machines}}
       <div class="machine">
@@ -25,5 +28,5 @@
         {{name}}
       </div>
       {{/each}}
-  </div>
+  </div> -->
 </template>
