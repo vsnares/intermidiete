@@ -1,23 +1,25 @@
 <template name="NewMachineName">
   <div class="new-machine-name-container">
     <form class="new-machine-name-form">
-        <label>New Machine Name
-          <input type="text" name="machineName" placeholder="ClientLocationType - MainOfficeСanteenDrinks" data-role="tagsinput">
-        </label>
-        {{#if $.Session.get 'AsignToRouteMode'}}
-          {{#each routes}}
-            <li>
-              <input type="checkbox" name="routeName" value={{_id}}>{{name}}
-            </li>
-          {{/each}}
-          <br>
-        {{/if}}
-        <button type="button" class="btn btn-text asign_to_route">+ assign to Route</button>
+      <label>New Machine Name
+        <input type="text" name="machineName" placeholder="ClientLocationType - MainOfficeСanteenDrinks">
+      </label>
+
+      <button type="button" class="btn btn-text asign_to_route">+ assign to Route</button>
+
+      {{#if $.Session.get 'AsignToRouteMode'}}
+        {{#each routes}}
+          <p>
+            <input type="checkbox" id="{{_id}}" name="routeName" value={{_id}}/>
+            <label for="{{_id}}"> {{name}} </label>
+          </p>
+        {{/each}}
         <br>
-        <br>
-        <input type="submit" value="Add Next" class="btn btn-primary">
-        <br>
-        <button type="button" class="btn btn-confirmation done">Done</button>
+      {{/if}}
+
+      <input type="submit" value="Add Next" class="btn btn-primary">
+      <br>
+      <button type="button" class="btn btn-confirmation done">Done</button>
     </form>
   </div>
   <!-- <div class="abz">

@@ -4,7 +4,11 @@
         <label>Please add your routes</label>
         <input type="text" name="routeName">
         {{#each machines}}
-          <input type="checkbox" name="machineName" class="checkbox checkbox--indigo" value={{_id}}>{{name}}
+          <p>
+            <input type="checkbox" id="{{_id}}" name="RouteName" value={{_id}}>
+            <label for="{{_id}}"> {{name}} </label>
+          </p>
+
         {{/each}}
         <input type="submit" value="Add Route" class="btn btn-primary">
     </form>

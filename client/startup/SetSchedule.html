@@ -3,14 +3,42 @@
       <div class="machine">
         <br>
         <h3>{{name}} : </h3>
-        <form class="schedule-input-form">
-          <input id="{{_id}}_monday"    type="radio" name="{{_id}}_day" value="1">Monday
-          <input id="{{_id}}_tuesday"   type="radio" name="{{_id}}_day" value="2">Tuesday
-          <input id="{{_id}}_wednesday" type="radio" name="{{_id}}_day" value="3">Wednesday
-          <input id="{{_id}}_thursday"  type="radio" name="{{_id}}_day" value="4">Thursday
-          <input id="{{_id}}_friday"    type="radio" name="{{_id}}_day" value="5">Friday
-          <input id="{{_id}}_saturday"  type="radio" name="{{_id}}_day" value="6">Saturday
-          <input id="{{_id}}_sunday"    type="radio" name="{{_id}}_day" value="7">Sunday
+        <form class="schedule-input-form text-center">
+          <div class="ck-button">
+            <label for="{{_id}}_1">
+              <input type="checkbox" id="{{_id}}_1" name="Mon" class="checkbox-custom" value="1"><span>Mon</span>
+            </label>
+          </div>
+          <div class="ck-button">
+            <label for="{{_id}}_2">
+              <input type="checkbox" id="{{_id}}_2" name="Tue" class="checkbox-custom" value=2><span>Tue</span>
+            </label>
+          </div>
+          <div class="ck-button">
+            <label for="{{_id}}_3">
+              <input type="checkbox" id="{{_id}}_3" name="Wed" class="checkbox-custom" value=3><span>Wed</span>
+            </label>
+          </div>
+          <div class="ck-button">
+            <label for="{{_id}}_4">
+              <input type="checkbox" id="{{_id}}_4" name="Thu" class="checkbox-custom" value=4><span>Thu</span>
+            </label>
+          </div>
+          <div class="ck-button">
+            <label for="{{_id}}_5">
+              <input type="checkbox" id="{{_id}}_5" name="Fri" class="checkbox-custom" value=5><span>Fri</span>
+            </label>
+          </div>
+          <div class="ck-button">
+            <label for="{{_id}}_6">
+              <input type="checkbox" id="{{_id}}_6" name="Sat" class="checkbox-custom" value=6><span>Sat</span>
+            </label>
+          </div>
+          <div class="ck-button">
+            <label for="{{_id}}_7">
+              <input type="checkbox" id="{{_id}}_7" name="Sun" class="checkbox-custom" value=7><span>Sun</span>
+            </label>
+          </div>
         </form>
       </div>
     {{/each}}

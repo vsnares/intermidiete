@@ -42,6 +42,11 @@ MachineSchema = new SimpleSchema({
     type: [Ingredient]
   },
 
+  schedule_days: {
+    optional: true,
+    type: [String]
+  },
+
   author: {
     type: String,
     label: "Author",
