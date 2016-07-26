@@ -12,6 +12,10 @@ Template.MachineSchedule.helpers({
   },
   routes: ()=> {
     return Routes.find({});
+  },
+  isChecked: function(value){
+    var string_value = value.toString();
+    return this.schedule_days.includes(string_value);
   }
 });
 

@@ -1,8 +1,10 @@
 <template name="SetDailyTicket">
   <h3> Today </h3>
   <label>Your Machine Name
-    <input type="text" name="machineName" placeholder="TargetBackHallDrink">
+    <br>
+    <input class="typeahead" name="MachineName" type="text" placeholder="TargetHallDrinks" autocomplete="on" spellcheck="off" data-source="machine" data-role="tagsinput">
   </label>
+  <br>
   <label> Money Collected
     <input type="text" name="moneyCollected" placeholder="156.00$">
   </label>
