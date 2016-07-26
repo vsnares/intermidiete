@@ -23,9 +23,10 @@ Template.NewMachineName.events({
         return item.defaultValue;
       });
       var machineNameVar = event.target.machineName.value;
-
+      var arrayOfTags = machineNameVar.split(',');
+      var nameWithNoCommas = machineNameVar.replace(/,/g,"");
       var insertedMachineId = Machines.insert({
-        name: machineNameVar
+        name: nameWithNoCommas
       });
 
       array.forEach(function(itemId, i, arr) {
@@ -44,3 +45,22 @@ Template.NewMachineName.events({
     Session.set('AsignToRouteMode', !Session.get('AsignToRouteMode'));
   }
 });
+
+
+Template.NewMachineName.rendered= function(){
+    var machineNames = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: [{name:"Target"}, {name:"Backyard"}, {name:"Drinks"}]
+    });
+    machineNames.initialize();
+
+    $('.suggest').tagsinput({
+      typeaheadjs: {
+        name: 'machinenames',
+        displayKey: 'name',
+        valueKey: 'name',
+        source: machineNames.ttAdapter()
+      }
+    });
+  }
