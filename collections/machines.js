@@ -25,6 +25,22 @@ Ingredient = new SimpleSchema({
   }
 });
 
+DailyTicket = new SimpleSchema({
+  amount: {
+    type: String
+  },
+  createdAt: {
+    type: Date,
+    label: "Created At",
+    autoValue: function() {
+      return new Date
+    },
+    autoform: {
+      type: "hidden"
+    }
+  }
+});
+
 MachineSchema = new SimpleSchema({
   name: {
     type: String,
@@ -40,6 +56,11 @@ MachineSchema = new SimpleSchema({
   ingredients: {
     optional: true,
     type: [Ingredient]
+  },
+
+  daily_tickets: {
+    optional: true,
+    type: [DailyTicket]
   },
 
   schedule_days: {

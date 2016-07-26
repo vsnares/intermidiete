@@ -35,6 +35,7 @@ Template.NewMachineName.events({
         });
       });
       template.find("form").reset();
+      $(".tag.label.label-info").remove();
   },
 
   'click .done' : function (event) {
