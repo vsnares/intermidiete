@@ -1,6 +1,8 @@
 <template name="MainLayout">
   {{> Header}}
-  <!-- {{> SideNav}} -->
+  {{#if $.Session.get 'menuMode'}}
+    {{> SideNav}}
+  {{/if}}
   <main class="main-layout">
     {{> Template.dynamic template=main}}
   </main>

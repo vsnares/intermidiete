@@ -17,7 +17,16 @@ Template.SetSchedule.helpers({
 
 
 Template.SetSchedule.events({
-  'click .done' : function (event) {
+  'submit form' : function (event, template) {
+
+      event.preventDefault();
+      var routeNameVar = event.target.RouteName.value;
+      // var all_machines = Machines.distinct("_id");
+      var all_machines = _.uniq(Machines.find({}, {sort: {"_id": 1}, fields: {"_id": true}}).fetch().map(function(x) {return x._id;}), true);
+      Routes.insert({
+        name: routeNameVar,
+        machines: all_machines
+      });
       FlowRouter.go('/set_daily_ticket');
   }
 });

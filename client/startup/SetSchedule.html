@@ -1,7 +1,9 @@
 <template name="SetSchedule">
+  <form class="set-schedule-form">
     <label>Please name your Route<input type="text" name="RouteName" value=""></label>
     {{#each machines}}
       {{> MachineSchedule}}
     {{/each}}
-    <button type="button" class="btn btn-primary done">DONE</button>
+    <button type="submit" class="btn btn-primary done">DONE</button>
+  </form>
 </template>
