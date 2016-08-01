@@ -31,13 +31,7 @@ DailyTicket = new SimpleSchema({
   },
   createdAt: {
     type: Date,
-    label: "Created At",
-    autoValue: function() {
-      return new Date
-    },
-    autoform: {
-      type: "hidden"
-    }
+    label: "Created At"
   }
 });
 
@@ -51,6 +45,12 @@ MachineSchema = new SimpleSchema({
     optional: true,
     type: String,
     label: "Description"
+  },
+
+  address: {
+    optional: true,
+    type: String,
+    label: "Address"
   },
 
   ingredients: {

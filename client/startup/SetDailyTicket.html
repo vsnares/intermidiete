@@ -3,12 +3,17 @@
     <h3> Today </h3>
     <label>Your Machine Name
       <br>
-      <input class="typeahead" name="machineName" type="text" placeholder="TargetHallDrinks" autocomplete="off" spellcheck="off" data-source="machine">
+      <input class="suggest" type="text" name="machineName" placeholder="TargetHallDrinks" data-role="tagsinput">
     </label>
     <br>
     <label> Money Collected
       <br>
       <input type="text" name="moneyCollected" placeholder="156.00$">
+    </label>
+    <br>
+    <label> Date
+      <br>
+      <input type="text" name="dateInput" class="datepicker" autocomplete="off" id="my-datepicker">
     </label>
     <br>
     <input type="submit" value="Save" class="btn btn-primary" >

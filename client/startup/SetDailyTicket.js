@@ -8,6 +8,9 @@ Template.SetDailyTicket.onCreated(function() {
 
 Template.SetDailyTicket.rendered = function() {
   Meteor.typeahead.inject();
+  $('#my-datepicker').datepicker({
+    language: 'en'
+  });
 };
 
 
@@ -22,13 +25,12 @@ Template.SetDailyTicket.events({
       event.preventDefault();
       var machineNameVar = event.target.machineName.value;
       var moneyCollectedVar = event.target.moneyCollected.value;
-
-      console.log(machineNameVar);
-      console.log(moneyCollectedVar);
+      var dateInputVar = event.target.dateInput.value;
+      var flattenedName = machineNameVar.replace(/,/g,"");
 
       Machines.findAndModify({
-        query: { name: machineNameVar },
-        update: { $push: { daily_tickets: {amount: moneyCollectedVar}}},
+        query: { name: flattenedNameb },
+        update: { $push: { daily_tickets: {amount: moneyCollectedVar, createdAt: new Date(dateInputVar)}}},
         upsert: true
       });
       template.find("form").reset();
@@ -38,3 +40,21 @@ Template.SetDailyTicket.events({
   //     FlowRouter.go('/set_schedule');
   // }
 });
+
+Template.SetDailyTicket.rendered= function(){
+    var machineNames = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: [{name:"Target"}, {name:"Backyard"}, {name:"Drinks"}]
+    });
+    machineNames.initialize();
+
+    $('.suggest').tagsinput({
+      typeaheadjs: {
+        name: 'machinenames',
+        displayKey: 'name',
+        valueKey: 'name',
+        source: machineNames.ttAdapter()
+      }
+    });
+  }

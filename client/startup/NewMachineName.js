@@ -23,10 +23,14 @@ Template.NewMachineName.events({
         return item.defaultValue;
       });
       var machineNameVar = event.target.machineName.value;
+      var machineDescrVar = event.target.machineDescr.value;
+      var machineAddressVar = event.target.machineAddress.value;
       var arrayOfTags = machineNameVar.split(',');
       var nameWithNoCommas = machineNameVar.replace(/,/g,"");
       var insertedMachineId = Machines.insert({
-        name: nameWithNoCommas
+        name:    nameWithNoCommas,
+        address: machineAddressVar,
+        desc:   machineDescrVar
       });
 
       array.forEach(function(itemId, i, arr) {

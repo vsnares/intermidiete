@@ -2,11 +2,18 @@
   <div class="new-machine-name-container">
     <form class="new-machine-name-form">
       <h1>Create machines</h1>
-      <label>New Machine Name
-        <br>
-        <input class="suggest" type="text" name="machineName" placeholder="ClientLocationType - MainOfficeСanteenDrinks" data-role="tagsinput">
-      </label>
+        <label>New Machine Name
 
+        </label>
+        <input class="suggest" type="text" name="machineName" placeholder="ClientLocationType - MainOfficeСanteenDrinks" data-role="tagsinput">
+        <label>Address
+          <input type="text" name="machineAddress" placeholder="optional" data-role="tagsinput">
+        </label>
+        <br>
+        <label>Description
+          <input type="text" name="machineDescr" placeholder="optional" data-role="tagsinput">
+        </label>
+        <br>
       <button type="button" class="btn btn-text asign_to_route">+ assign to Route</button>
 
       {{#if $.Session.get 'AsignToRouteMode'}}
@@ -19,7 +26,7 @@
         <br>
       {{/if}}
 
-      <input type="submit" value="Add Next" class="btn btn-primary">
+      <input type="submit" value="Add Next" class="btn btn-primary m-bottom-10">
       <br>
       <button type="button" class="btn btn-confirmation done">Done</button>
     </form>
