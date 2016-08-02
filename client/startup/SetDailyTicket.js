@@ -42,19 +42,37 @@ Template.SetDailyTicket.events({
 });
 
 Template.SetDailyTicket.rendered= function(){
-    var machineNames = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: [{name:"Target"}, {name:"Backyard"}, {name:"Drinks"}]
-    });
-    machineNames.initialize();
 
-    $('.suggest').tagsinput({
-      typeaheadjs: {
-        name: 'machinenames',
-        displayKey: 'name',
-        valueKey: 'name',
-        source: machineNames.ttAdapter()
-      }
-    });
+  // var bananchik = Machines.distinct("name")
+
+  var distinctEntries = _.uniq(Machines.find({}, {
+    sort: {name: 1}, fields: {name: true}
+  }).fetch().map(function(x) {
+    return x.name;
+  }), true);
+
+  var ananasik = function toObject(bananchik) {
+    var rv = {};
+    for (var i = 0; i < arr.length; ++i)
+      rv["name"] = bananchik[i];
+      return rv;
   }
+
+  console.log(distinctEntries)
+
+  var machineNames = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    local: [{name:"Target"}, {name:"Backyard"}, {name:"Drinks"}]
+  });
+  machineNames.initialize();
+
+  $('.suggest').tagsinput({
+    typeaheadjs: {
+      name: 'machinenames',
+      displayKey: 'name',
+      valueKey: 'name',
+      source: machineNames.ttAdapter()
+    }
+  });
+}

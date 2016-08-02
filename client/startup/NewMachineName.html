@@ -1,22 +1,43 @@
 <template name="NewMachineName">
   <div class="new-machine-name-container">
-    <form class="new-machine-name-form">
-      <h1>Create machines</h1>
-        <label>New Machine Name
+    <div class="text-center page-header">
+      <h2>Create machines</h2>
+      <h5>Add your machine to the system</h5>
+    </div>
+    <form class="new-machine-name-form form-horizontal">
+      <div class="form-group">
+        <label class="col-md-2 col-sm-12">Machine Name</label>
+        <div class="col-md-10 col-sm-12">
+          <input class="suggest" type="text" name="machineName" placeholder="ClientLocationType - MainOfficeСanteenDrinks" data-role="tagsinput">
+        </div>
+      </div>
 
-        </label>
-        <input class="suggest" type="text" name="machineName" placeholder="ClientLocationType - MainOfficeСanteenDrinks" data-role="tagsinput">
-        <label>Address
+      <div class="form-group">
+        <label class="col-md-2 col-sm-12">Address</label>
+        <div class="col-md-10 col-sm-12">
           <input type="text" name="machineAddress" placeholder="optional" data-role="tagsinput">
-        </label>
-        <br>
-        <label>Description
-          <input type="text" name="machineDescr" placeholder="optional" data-role="tagsinput">
-        </label>
-        <br>
-      <button type="button" class="btn btn-text asign_to_route">+ assign to Route</button>
+        </div>
+      </div>
 
-      {{#if $.Session.get 'AsignToRouteMode'}}
+      <div class="form-group">
+        <label class="col-md-2 col-sm-12">Description</label>
+        <div class="col-md-10 col-sm-12">
+          <input type="text" name="machineDescr" placeholder="optional" data-role="tagsinput">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          <button type="submit" class="btn btn-primary">Add Next</button>
+          <button type="button" class="btn btn-confirmation done">Done</button>
+        </div>
+      </div>
+
+      <!-- <div class="form-group">
+        <button type="button" class="btn btn-text asign_to_route">+ assign to Route</button>
+      </div> -->
+
+      <!-- {{#if $.Session.get 'AsignToRouteMode'}}
         {{#each routes}}
           <p>
             <input type="checkbox" id="{{_id}}" name="routeName" value={{_id}}/>
@@ -24,11 +45,8 @@
           </p>
         {{/each}}
         <br>
-      {{/if}}
+      {{/if}} -->
 
-      <input type="submit" value="Add Next" class="btn btn-primary m-bottom-10">
-      <br>
-      <button type="button" class="btn btn-confirmation done">Done</button>
     </form>
   </div>
   <!-- <div class="abz">

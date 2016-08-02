@@ -1,21 +1,34 @@
 <template name="SetDailyTicket">
-  <form class="set-daily-ticket-form">
-    <h3> Today </h3>
-    <label>Your Machine Name
-      <br>
-      <input class="suggest" type="text" name="machineName" placeholder="TargetHallDrinks" data-role="tagsinput">
-    </label>
-    <br>
-    <label> Money Collected
-      <br>
-      <input type="text" name="moneyCollected" placeholder="156.00$">
-    </label>
-    <br>
-    <label> Date
-      <br>
-      <input type="text" name="dateInput" class="datepicker" autocomplete="off" id="my-datepicker">
-    </label>
-    <br>
-    <input type="submit" value="Save" class="btn btn-primary" >
+  <div class="text-center page-header">
+    <h2>Add ticket</h2>
+    <h5>Input records and for your new or already created machines</h5>
+  </div>
+  <form class="set-daily-ticket-form form-horizontal">
+    <div class="form-group">
+      <label class="col-md-2 col-sm-12">Machine</label>
+      <div class="col-md-10 col-sm-12">
+        <input class="suggest" type="text" name="machineName" placeholder="TargetHallDrinks" data-role="tagsinput">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-2 col-sm-12">Money Collected</label>
+      <div class="col-md-10 col-sm-12">
+        <input type="text" name="moneyCollected" placeholder="156.00$">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-2 col-sm-12">Date</label>
+      <div class="col-md-10 col-sm-12">
+        <input type="text" name="dateInput" class="datepicker" autocomplete="off" id="my-datepicker">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
   </form>
 </template>
