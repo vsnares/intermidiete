@@ -16,15 +16,6 @@ Machines.allow({
   }
 });
 
-Ingredient = new SimpleSchema({
-  name: {
-    type: String
-  },
-  amount: {
-    type: String
-  }
-});
-
 DailyTicket = new SimpleSchema({
   amount: {
     type: String
@@ -53,17 +44,17 @@ MachineSchema = new SimpleSchema({
     label: "Address"
   },
 
-  ingredients: {
-    optional: true,
-    type: [Ingredient]
-  },
-
   daily_tickets: {
     optional: true,
     type: [DailyTicket]
   },
 
   schedule_days: {
+    optional: true,
+    type: [String]
+  },
+
+  tags: {
     optional: true,
     type: [String]
   },

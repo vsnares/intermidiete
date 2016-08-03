@@ -11,6 +11,32 @@ Template.SetDailyTicket.rendered = function() {
   $('#my-datepicker').datepicker({
     language: 'en'
   });
+
+  // var arrayOfAllTags = []
+  // Machines.find().forEach(function(m) { m.tags.forEach(function(item, i, arr) { result.push(item) }); });
+
+  arrayOfAllTags = _.reduce(_.map(Machines.find({}).fetch(),
+    function(doc) {
+      return doc.tags
+    }),
+    function(array1, array2){
+      array1 = array1.concat(array2)
+      return array1;
+    });
+
+  var machineNames = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.whitespace,
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    local: arrayOfAllTags
+  });
+  machineNames.initialize();
+
+  $('.suggest').tagsinput({
+    typeaheadjs: {
+      name: 'machinenames',
+      source: machineNames.ttAdapter()
+    }
+  });
 };
 
 
@@ -34,45 +60,8 @@ Template.SetDailyTicket.events({
         upsert: true
       });
       template.find("form").reset();
+  },
+  'click .save' : function (event) {
+      FlowRouter.go('/set_schedule');
   }
-
-  // 'click .save' : function (event) {
-  //     FlowRouter.go('/set_schedule');
-  // }
 });
-
-Template.SetDailyTicket.rendered= function(){
-
-  // var bananchik = Machines.distinct("name")
-
-  var distinctEntries = _.uniq(Machines.find({}, {
-    sort: {name: 1}, fields: {name: true}
-  }).fetch().map(function(x) {
-    return x.name;
-  }), true);
-
-  var ananasik = function toObject(bananchik) {
-    var rv = {};
-    for (var i = 0; i < arr.length; ++i)
-      rv["name"] = bananchik[i];
-      return rv;
-  }
-
-  console.log(distinctEntries)
-
-  var machineNames = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    local: [{name:"Target"}, {name:"Backyard"}, {name:"Drinks"}]
-  });
-  machineNames.initialize();
-
-  $('.suggest').tagsinput({
-    typeaheadjs: {
-      name: 'machinenames',
-      displayKey: 'name',
-      valueKey: 'name',
-      source: machineNames.ttAdapter()
-    }
-  });
-}

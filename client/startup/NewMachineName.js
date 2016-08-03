@@ -30,7 +30,8 @@ Template.NewMachineName.events({
       var insertedMachineId = Machines.insert({
         name:    nameWithNoCommas,
         address: machineAddressVar,
-        desc:   machineDescrVar
+        desc:    machineDescrVar,
+        tags:    arrayOfTags
       });
 
       array.forEach(function(itemId, i, arr) {
@@ -53,18 +54,25 @@ Template.NewMachineName.events({
 
 
 Template.NewMachineName.rendered= function(){
+    arrayOfAllTags = _.reduce(_.map(Machines.find({}).fetch(),
+      function(doc) {
+        return doc.tags
+      }),
+      function(array1, array2){
+        array1 = array1.concat(array2)
+        return array1;
+      });
+
     var machineNames = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+      datumTokenizer: Bloodhound.tokenizers.whitespace,
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: [{name:"Target"}, {name:"Backyard"}, {name:"Drinks"}]
+      local: arrayOfAllTags
     });
     machineNames.initialize();
 
     $('.suggest').tagsinput({
       typeaheadjs: {
         name: 'machinenames',
-        displayKey: 'name',
-        valueKey: 'name',
         source: machineNames.ttAdapter()
       }
     });
