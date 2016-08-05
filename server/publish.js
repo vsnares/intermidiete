@@ -36,3 +36,13 @@ Meteor.publish('machineRoutes', function(machineId) {
     }
   });
 });
+
+Meteor.publish("autocompleteMachines", function(query) {
+  return Machines.find({
+    name: new RegExp(query, "i")
+  }, {
+    fields: {
+      name: 1
+    }
+  });
+});

@@ -7,6 +7,6 @@ Template.Menu.onCreated(function() {
 
 Template.Menu.helpers({
   machines: ()=> {
-    return Machines.find({inMenu: true});
+    return Machines.find({cheked: true});
   }
 });

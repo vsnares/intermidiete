@@ -70,7 +70,7 @@ MachineSchema = new SimpleSchema({
     }
   },
 
-  inMenu: {
+  cheked: {
     type: Boolean,
     defaultValue: false,
     optional: true,
@@ -95,7 +95,7 @@ Meteor.methods({
   toggleMenuItem: function(id, currentState) {
     Machines.update(id, {
       $set: {
-        inMenu: !currentState
+        cheked: !currentState
       }
     });
   },

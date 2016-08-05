@@ -33,10 +33,10 @@ matb33:bootstrap-glyphicons
 zimme:active-route
 gwendall:auth-client-callbacks
 meteortoys:allthings
-datariot:ganalytics
 
 check@1.2.3
 sergeyt:typeahead
 ajduke:bootstrap-tagsinput
 fongandrew:find-and-modify
 rajit:bootstrap3-datepicker-it
+juliancwirko:s-alert

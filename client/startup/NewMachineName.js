@@ -1,8 +1,10 @@
 Template.NewMachineName.onCreated(function() {
+  console.log("CREATED!!!")
   var self = this;
   self.autorun(function() {
     self.subscribe('machines');
-    self.subscribe('routes')
+    self.subscribe('routes');
+    self.subscribe("autocompleteMachines");
   });
 });
 
@@ -18,21 +20,24 @@ Template.NewMachineName.helpers({
 Template.NewMachineName.events({
   'submit form': function(event, template) {
       event.preventDefault();
-      var selected = template.findAll( "input[type=checkbox]:checked");
-      var array = _.map(selected, function(item) {
+      selected = template.findAll( "input[type=checkbox]:checked");
+      array = _.map(selected, function(item) {
         return item.defaultValue;
       });
-      var machineNameVar = event.target.machineName.value;
-      var machineDescrVar = event.target.machineDescr.value;
-      var machineAddressVar = event.target.machineAddress.value;
-      var arrayOfTags = machineNameVar.split(',');
-      var nameWithNoCommas = machineNameVar.replace(/,/g,"");
-      var insertedMachineId = Machines.insert({
-        name:    nameWithNoCommas,
-        address: machineAddressVar,
-        desc:    machineDescrVar,
-        tags:    arrayOfTags
-      });
+
+      machineNameVar = $(".suggest").tagsinput('items')
+      console.log(machineNameVar)
+      machineDescrVar = event.target.machineDescr.value;
+      machineAddressVar = event.target.machineAddress.value;
+      nameWithNoCommas = machineNameVar.join().replace(/,/g,"");
+      insertedMachineId = Machines.insert({
+          name:    nameWithNoCommas,
+          address: machineAddressVar,
+          desc:    machineDescrVar,
+          tags:    machineNameVar
+        }, function(error, result) {
+          sAlert.warning(error.message, {timeout: 3000});
+        });
 
       array.forEach(function(itemId, i, arr) {
         Routes.update(itemId, {
@@ -41,6 +46,7 @@ Template.NewMachineName.events({
       });
       template.find("form").reset();
       $(".tag.label.label-info").remove();
+      $("#tagsInput").tagsinput('removeAll');
   },
 
   'click .done' : function (event) {
@@ -52,17 +58,30 @@ Template.NewMachineName.events({
   }
 });
 
-
 Template.NewMachineName.rendered= function(){
-    arrayOfAllTags = _.reduce(_.map(Machines.find({}).fetch(),
+    console.log("RENDERED!!!")
+
+    function arrayUnique(array) {
+      var a = array.concat();
+      for(var i=0; i<a.length; ++i) {
+          for(var j=i+1; j<a.length; ++j) {
+              if(a[i] === a[j])
+                  a.splice(j--, 1);
+          }
+      }
+      return a;
+    }
+
+    var arrayOfAllTags = _.reduce(_.map(Machines.find({}).fetch(),
       function(doc) {
         return doc.tags
       }),
       function(array1, array2){
-        array1 = array1.concat(array2)
-        return array1;
+        final_array = arrayUnique(array1.concat(array2));
+        return final_array;
       });
 
+    console.log(arrayOfAllTags)
     var machineNames = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.whitespace,
       queryTokenizer: Bloodhound.tokenizers.whitespace,

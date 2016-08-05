@@ -1,5 +1,6 @@
 <template name="NewMachineName">
   <div class="new-machine-name-container">
+    {{> sAlert}}
     <div class="text-center page-header">
       <h2>Create machines</h2>
       <h5>Add your machine to the system</h5>
@@ -8,21 +9,21 @@
       <div class="form-group">
         <label class="col-md-2 col-sm-12">Machine Name</label>
         <div class="col-md-10 col-sm-12">
-          <input class="suggest" type="text" name="machineName" placeholder="ClientLocationType - MainOfficeСanteenDrinks" autocomplete="off" data-role="tagsinput">
+          <input class="suggest" type="text" id="tagsInput" name="machineName" placeholder="Target Сanteen Drinks" autocomplete="off" data-role="tagsinput">
         </div>
       </div>
 
       <div class="form-group">
         <label class="col-md-2 col-sm-12">Address</label>
         <div class="col-md-10 col-sm-12">
-          <input type="text" name="machineAddress" placeholder="optional" data-role="tagsinput">
+          <input type="text" name="machineAddress" placeholder="Optional" data-role="tagsinput">
         </div>
       </div>
 
       <div class="form-group">
         <label class="col-md-2 col-sm-12">Description</label>
         <div class="col-md-10 col-sm-12">
-          <input type="text" name="machineDescr" placeholder="optional" data-role="tagsinput">
+          <input type="text" name="machineDescr" placeholder="Optional" data-role="tagsinput">
         </div>
       </div>
 

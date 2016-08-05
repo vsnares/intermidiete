@@ -7,6 +7,6 @@ Template.ShoppingList.onCreated(function() {
 
 Template.ShoppingList.helpers({
   shoppingList: ()=> {
-    return Machines.find({inMenu: true});
+    return Machines.find({cheked: true});
   }
 });
